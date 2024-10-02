@@ -1,0 +1,2463 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>फसल शिक्षण मॉड्यूल</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e7f6d5;
+        }
+        .hero-section {
+            background-color: #66bb6a;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+        }
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+        }
+        .hero-section p {
+            font-size: 1.2rem;
+        }
+        #learn {
+            background-color: #c8e6c9;
+            padding: 50px 0;
+        }
+        #quiz {
+            background-color: #a5d6a7;
+            padding: 50px 0;
+        }
+        .card {
+            margin: 20px 0;
+        }
+        .learn-frame {
+            margin-top: 20px;
+            padding: 20px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            background-color: #f5f5f5;
+            text-align: justify;
+        }
+        nav.navbar {
+            background-color: #2e7d32;
+        }
+        footer {
+            background-color: #2e7d32;
+            color: #fff;
+        }
+        .btn-primary {
+            background-color: #388e3c;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #2e7d32;
+        }
+        #youtubeLearning, #governmentSchemes {
+    margin: 20px 0;
+}
+
+#youtubeChannels a, #schemesList a {
+    color: #007bff; /* Link color */
+    text-decoration: none;
+}
+
+#youtubeChannels a:hover, #schemesList a:hover {
+    text-decoration: underline; /* Add hover effect */
+}
+
+    </style>
+    
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">फसल शिक्षण</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">होम</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#learn">सीखें</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#quiz">प्रश्नोत्तरी</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4">फसल शिक्षण मॉड्यूल में आपका स्वागत है</h1>
+            <p class="lead">फसलों के बारे में सब कुछ जानें और हमारी प्रश्नोत्तरी से अपने ज्ञान का परीक्षण करें।</p>
+            <a href="#learn" class="btn btn-primary btn-lg mt-4">शुरू करें</a>
+        </div>
+    </header>
+
+    <!-- Learning Section -->
+    <section id="learn">
+        <div class="container">
+            <h2 class="text-center mb-4">फसलों के बारे में जानें</h2>
+
+            <!-- Card for Crop Selection -->
+            <div class="card">
+                <div class="card-header">
+                    फसल चुनें
+                </div>
+                <div class="card-body">
+                    <select id="cropSelect" class="form-select">
+                        <option value="" selected disabled>फसल चुनें...</option>
+                        <option value="गेहूं">गेहूं (Wheat)</option>
+                        <option value="चावल">चावल (Rice)</option>
+                        <option value="मक्का">मक्का (Corn)</option>
+                        <option value="सोयाबीन">सोयाबीन (Soybeans)</option>
+                        <option value="बाजरा">बाजरा (Pearl Millet)</option>
+                        <option value="ज्वार">ज्वार (Sorghum)</option>
+                        <option value="मूंग">मूंग (Green Gram)</option>
+                        <option value="उड़द">उड़द (Black Gram)</option>
+                        <option value="मसूर">मसूर (Lentil)</option>
+                        <option value="चना">चना (Chickpea)</option>
+                        <option value="मटर">मटर (Peas)</option>
+                        <option value="अरहर">अरहर (Pigeon Pea)</option>
+                        <option value="तिल">तिल (Sesame)</option>
+                        <option value="मूंगफली">मूंगफली (Peanut)</option>
+                        <option value="सरसों">सरसों (Mustard)</option>
+                        <option value="सूरजमुखी">सूरजमुखी (Sunflower)</option>
+                        <option value="अलसी">अलसी (Flax)</option>
+                        <option value="कपास">कपास (Cotton)</option>
+                        <option value="गन्ना">गन्ना (Sugarcane)</option>
+                        <option value="आलू">आलू (Potato)</option>
+                        <option value="प्याज">प्याज (Onion)</option>
+                        <option value="टमाटर">टमाटर (Tomato)</option>
+                        <option value="मिर्च">मिर्च (Chili)</option>
+                        <option value="लहसुन">लहसुन (Garlic)</option>
+                        <option value="अदरक">अदरक (Ginger)</option>
+                        <option value="हल्दी">हल्दी (Turmeric)</option>
+                        <option value="धनिया">धनिया (Coriander)</option>
+                        <option value="जीरा">जीरा (Cumin)</option>
+                        <option value="मेथी">मेथी (Fenugreek)</option>
+                        <option value="पालक">पालक (Spinach)</option>
+                        <option value="गोभी">गोभी (Cabbage)</option>
+                        <option value="बैंगन">बैंगन (Eggplant)</option>
+                        <option value="भिंडी">भिंडी (Okra)</option>
+                        <option value="गाजर">गाजर (Carrot)</option>
+                        <option value="मूली">मूली (Radish)</option>
+                        <option value="खीरा">खीरा (Cucumber)</option>
+                        <option value="लौकी">लौकी (Bottle Gourd)</option>
+                        <option value="करेला">करेला (Bitter Gourd)</option>
+                        <option value="तोरी">तोरी (Ridge Gourd)</option>
+                        <option value="शिमला मिर्च">शिमला मिर्च (Capsicum)</option>
+                        <option value="अरबी">अरबी (Taro)</option>
+                        <option value="शकरकंद">शकरकंद (Sweet Potato)</option>
+                        <option value="जूट">जूट (Jute)</option>
+                        <option value="रबड़">रबड़ (Rubber)</option>
+                        <option value="चाय">चाय (Tea)</option>
+                        <option value="कॉफी">कॉफी (Coffee)</option>
+                        <option value="नारियल">नारियल (Coconut)</option>
+                        <option value="केला">केला (Banana)</option>
+                        <option value="आम">आम (Mango)</option>
+                    </select>
+                    <button class="btn btn-primary mt-3" onclick="displayCropInfo()">जानकारी देखें</button>
+                </div>
+            </div>
+
+            <!-- Rectangular Frame for Crop Information -->
+            <div id="learnFrame" class="learn-frame" style="display:none;">
+                <h4 id="cropTitle"></h4>
+                <h5>सामान्य जानकारी:</h5>
+                <p id="cropInfo"></p>
+                <h5>खेती की विधि:</h5>
+                <div id="cultivationInfo"></div>
+                <h5>फसल की देखभाल:</h5>
+                <div id="cropCare"></div>
+                <h5>फसल की कटाई और भंडारण:</h5>
+                <div id="harvestStorage"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+<section id="quiz">
+    <div class="container">
+        <h2 class="text-center mb-4">अपने ज्ञान का परीक्षण करें</h2>
+        <div class="quiz-container p-4 shadow rounded bg-light">
+            <p id="question" class="lead"></p>
+            <ul id="options" class="list-group">
+                <!-- Options will be injected here by JS -->
+            </ul>
+            <div class="d-flex justify-content-between mt-4">
+                <button id="prevBtn" class="btn btn-danger" onclick="prevQuestion()">पिछला</button> <!-- Updated function name here -->
+                <button id="nextBtn" class="btn btn-success" onclick="nextQuestion()">अगला</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- YouTube Learning Section -->
+<section id="youtubeLearning">
+    <div class="container">
+        <h2 class="text-center mb-4">YouTube से सीखने के चैनल</h2>
+        <ul id="youtubeChannels" class="list-group">
+            <li class="list-group-item"><a href="https://www.youtube.com/@IndianFarmer" target="_blank">Indian Farmer</a></li>
+            <li class="list-group-item"><a href="https://www.youtube.com/@OrganicAcre" target="_blank">Organic Acre</a></li>
+            <li class="list-group-item"><a href="https://www.youtube.com/@TheAdvanceAgriculture" target="_blank">The Advance Agriculture</a></li>
+            <!-- Add more channels as needed -->
+        </ul>
+    </div>
+</section>
+
+<!-- Government Schemes Section -->
+<section id="governmentSchemes">
+    <div class="container">
+        <h2 class="text-center mb-4">सरकारी योजनाएँ</h2>
+        <ul id="schemesList" class="list-group">
+            <li class="list-group-item"><a href="https://pmkisan.gov.in/" target="_blank">Pradhan Mantri Kisan Samman Nidhi (PM-KISAN)</a></li>
+            <li class="list-group-item"><a href="https://pmkmy.gov.in/" target="_blank">Pradhan Mantri Kisan MaanDhan Yojana (PM-KMY)</a></li>
+            <li class="list-group-item"><a href="https://pmksy.gov.in/" target="_blank">Pradhan Mantri Krishi Sinchayee Yojana (PM-KSY)</a></li>
+            <!-- Add more schemes as needed -->
+        </ul>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p>© 2024 B.Tech CSE(AIML) Field Project<br>SBJITMR<br>
+        Designed & Developed by:<br>
+        <ul>
+            <li>Mr. Ayush D. Badwaik</li>
+            <li>Mr. Utkarsh S. Punkar</li>
+            <li>Mr. Vedant A. Bhanarkar</li>
+            <li>Mr. Sarang R. Ghatulkar</li>
+            <li>Mr. Dipanshu U. Mathankar</li>
+        </ul>
+        <br>
+        Contact us: +91 82088 32911 ; Ayushbadwaik.aiml23@sbjit.edu.in
+        </p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript to handle crop information and quiz -->
+    <script>
+        // विस्तृत फसल जानकारी
+        const cropData = {
+            "गेहूं": {
+                info: "गेहूं एक महत्वपूर्ण खाद्यान्न फसल है जो दुनिया भर में व्यापक रूप से उगाई जाती है। यह मानव आहार में कार्बोहाइड्रेट और प्रोटीन का एक प्रमुख स्रोत है। गेहूं से आटा, सूजी, दलिया और अन्य उत्पाद बनाए जाते हैं। यह रबी की फसल है जो शीत ऋतु में उगाई जाती है।",
+                cultivation: `
+                    <ol>
+                        <li><strong>मिट्टी की तैयारी:</strong> गेहूं के लिए दोमट या मटियार दोमट मिट्टी सबसे उपयुक्त होती है। खेत को 2-3 बार जोतकर समतल करें। मिट्टी का pH 6.0 से 7.5 के बीच होना चाहिए।</li>
+                        <li><strong>बीज का चयन:</strong> प्रमाणित, उच्च उपज देने वाले बीजों का चयन करें। क्षेत्र के अनुसार उपयुक्त किस्म चुनें जैसे HD-2967, WH-1105, DBW-17 आदि।</li>
+                        <li><strong>बुवाई का समय:</strong> उत्तर भारत में अक्टूबर-नवंबर और मध्य भारत में नवंबर-दिसंबर में बुवाई करें। समय पर बुवाई से अच्छी पैदावार मिलती है।</li>
+                        <li><strong>बीज दर:</strong> प्रति हेक्टेयर 100-125 किलोग्राम बीज का उपयोग करें। सिंचित क्षेत्रों में अधिक और बारानी क्षेत्रों में कम बीज दर रखें।</li>
+                        <li><strong>बुवाई की विधि:</strong> कतार में बुवाई करें, कतारों के बीच 20-22 सेमी की दूरी रखें। बीज को 5-6 सेमी की गहराई पर बोएं।</li>
+                        <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 120 किग्रा नाइट्रोजन, 60 किग्रा फास्फोरस और 40 किग्रा पोटाश का प्रयोग करें। नाइट्रोजन को दो या तीन बार में दें - बुवाई के समय, पहली सिंचाई के बाद और दूसरी सिंचाई के बाद।</li>
+                    </ol>
+                `,
+                care: `
+                    <ul>
+                        <li><strong>सिंचाई:</strong> फसल चक्र में 4-6 सिंचाई की आवश्यकता होती है। महत्वपूर्ण चरणों में जैसे क्राउन रूट इनिशिएशन (21-25 दिन), टिलरिंग (40-45 दिन), जोइंटिंग (60-65 दिन), बूटिंग (80-85 दिन), और दाना भरने (100-105 दिन) के समय सिंचाई अवश्य करें।</li>
+                        <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 30-35 दिन बाद निराई-गुड़ाई करें। आवश्यकतानुसार शाकनाशी जैसे 2,4-D या मेट्रिब्यूजिन का प्रयोग करें।</li>
+                        <li><strong>रोग नियंत्रण:</strong> 
+                            <ul>
+                                <li>पीला रतुआ: प्रोपिकोनाजोल 25 EC @ 0.1% का छिड़काव करें।</li>
+                                <li>भूरा रतुआ: ट्राईडेमॉर्फ 80 WP @ 0.1% का छिड़काव करें।</li>
+                                <li>करनाल बंट: बीज को कार्बेन्डाजिम से उपचारित करें।</li>
+                            </ul>
+                        </li>
+                        <li><strong>कीट नियंत्रण:</strong> 
+                            <ul>
+                                <li>दीमक: क्लोरपायरीफॉस 20 EC @ 4 लीटर/हेक्टेयर का प्रयोग करें।</li>
+                                <li>चूहे: जिंक फॉस्फाइड का प्रयोग करें या बाड़ लगाएं।</li>
+                            </ul>
+                        </li>
+                    </ul>
+                `,
+                harvestStorage: `
+                    <ul>
+                        <li><strong>कटाई का समय:</strong> जब दाने पूरी तरह से पक जाएं और उनका रंग सुनहरा हो जाए, तब फसल काटें। आमतौर पर यह बुवाई के 120-150 दिन बाद होता है।</li>
+                        <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर से कटाई की जा सकती है। सुबह या शाम के समय कटाई करें जब नमी अधिक हो।</li>
+                        <li><strong>मड़ाई:</strong> थ्रेशर या कंबाइन से मड़ाई करें। मड़ाई के बाद अनाज को अच्छी तरह साफ करें।</li>
+                        <li><strong>सुखाना:</strong> अनाज को धूप में अच्छी तरह सुखाएं ताकि नमी 12-14% तक आ जाए।</li>
+                        <li><strong>भंडारण:</strong> 
+                            <ul>
+                                <li>अनाज को कीट मुक्त, हवादार गोदामों में भंडारित करें।</li>
+                                <li>बोरों में भरने से पहले बोरों को धूप में सुखाएं और कीटनाशक से उपचारित करें।</li>
+                                <li>भंडारण स्थान को साफ और सूखा रखें।</li>
+                                <li>नियमित रूप से भंडारित अनाज की जांच करें।</li>
+                            </ul>
+                        </li>
+                        <li><strong>बीज भंडारण:</strong> अगली फसल के लिए बीज को सrong> अगली फसल के लिए बीज को सील किए गए डिब्बों में रखें और कीटनाशक से उपचारित करें। बीज को ठंडे और सूखे स्थान पर रखें।</li>
+                    </ul>
+                `
+            },
+            "चावल": {
+                info: "चावल एशिया का प्रमुख खाद्यान्न है और दुनिया की आधी से अधिक आबादी का मुख्य भोजन है। यह कार्बोहाइड्रेट का एक महत्वपूर्ण स्रोत है और विभिन्न प्रकार के व्यंजनों में इस्तेमाल किया जाता है। चावल खरीफ की फसल है जो मानसून के मौसम में उगाई जाती है।",
+                cultivation: `
+                    <ol>
+                        <li><strong>मिट्टी की तैयारी:</strong> चावल के लिए जलोढ़ या दोमट मिट्टी उपयुक्त होती है। खेत को जोतकर और पाटा लगाकर समतल करें। मिट्टी का pH 5.5 से 6.5 के बीच होना चाहिए।</li>
+                        <li><strong>बीज का चयन:</strong> क्षेत्र और मौसम के अनुसार उपयुक्त किस्म चुनें जैसे MTU-7029, IR-64, Pusa Basmati-1 आदि। प्रमाणित बीज का उपयोग करें।</li>
+                        <li><strong>नर्सरी तैयारी:</strong> 1/10 क्षेत्र में नर्सरी तैयार करें। बीज को 24 घंटे भिगोकर बोएं। प्रति हेक्टेयर 40-50 किग्रा बीज की आवश्यकता होती है।</li>
+                        <li><strong>रोपाई:</strong> 20-25 दिन के पौधे को मुख्य खेत में 20x15 सेमी की दूरी पर रोपें। सीधी बुवाई के लिए ड्रम सीडर या पावर टिलर का उपयोग करें।</li>
+                        <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 120 किग्रा नाइट्रोजन, 60 किग्रा फास्फोरस और 60 किग्रा पोटाश का प्रयोग करें। नाइट्रोजन को तीन बार में दें - रोपाई के समय, कल्ले फूटते समय और गाभा निकलते समय।</li>
+                    </ol>
+                `,
+                care: `
+                    <ul>
+                        <li><strong>जल प्रबंधन:</strong> रोपाई के बाद 5 सेमी पानी बनाए रखें। फूल आने के समय और दाना भरने के दौरान पानी की कमी न होने दें। फसल पकने से 10-15 दिन पहले खेत से पानी निकाल दें।</li>
+                        <li><strong>खरपतवार नियंत्रण:</strong> रोपाई के 20-25 दिन बाद निराई-गुड़ाई करें। जरूरत पड़ने पर बिस्पाइरिबैक सोडियम या पेंडीमेथालिन जैसे शाकनाशी का प्रयोग करें।</li>
+                        <li><strong>रोग नियंत्रण:</strong> 
+                            <ul>
+                                <li>ब्लास्ट: ट्राइसाइक्लाजोल 75 WP @ 0.6 ग्राम/लीटर का छिड़काव करें।</li>
+                                <li>बैक्टीरियल लीफ ब्लाइट: स्ट्रेप्टोसाइक्लिन + कॉपर ऑक्सीक्लोराइड का छिड़काव करें।</li>
+                                <li>शीथ ब्लाइट: हेक्साकोनाजोल 5 EC @ 2 मिली/लीटर का छिड़काव करें।</li>
+                            </ul>
+                        </li>
+                        <li><strong>कीट नियंत्रण:</strong> 
+                            <ul>
+                                <li>तना छेदक: कार्टाप हाइड्रोक्लोराइड 4G @ 25 किग्रा/हेक्टेयर का प्रयोग करें।</li>
+                                <li>पत्ती लपेटक: क्लोरपायरीफॉस 20 EC @ 2.5 लीटर/हेक्टेयर का छिड़काव करें।</li>
+                                <li>भूरा फुदका: बुप्रोफेजिन 25 SC @ 800 मिली/हेक्टेयर का छिड़काव करें।</li>
+                            </ul>
+                        </li>
+                    </ul>
+                `,
+                harvestStorage: `
+                    <ul>
+                        <li><strong>कटाई का समय:</strong> जब 80-85% बालियां पक जाएं और दाने का रंग सुनहरा हो जाए, तब फसल काटें। आमतौर पर यह रोपाई के 120-150 दिन बाद होता है।</li>
+                        <li><strong>कटाई की विधि:</strong> हाथ से या रीपर से कटाई की जा सकती है। सुबह या शाम के समय कटाई करें जब नमी अधिक हो।</li>
+                        <li><strong>मड़ाई:</strong> थ्रेशर या पैडी थ्रेशर से मड़ाई करें। मड़ाई के बाद धान को अच्छी तरह साफ करें।</li>
+                        <li><strong>सुखाना:</strong> धान को धूप में अच्छी तरह सुखाएं ताकि नमी 14% से कम हो जाए।</li>
+                        <li><strong>भंडारण:</strong> 
+                            <ul>
+                                <li>सूखे, हवादार स्थान पर बोरों में या बल्क स्टोरेज में रखें।</li>
+                                <li>कीट नियंत्रण के लिए नीम के पत्ते का प्रयोग करें।</li>
+                                <li>भंडारण स्थान को साफ और सूखा रखें।</li>
+                                <li>नियमित रूप से भंडारित धान की जांच करें।</li>
+                            </ul>
+                        </li>
+                        <li><strong>बीज भंडारण:</strong> अगली फसल के लिए बीज को सील किए गए डिब्बों में रखें और कीटनाशक से उपचारित करें। बीज को ठंडे और सूखे स्थान पर रखें।</li>
+                    </ul>
+                `
+            },
+            "मक्का": {
+                info: "मक्का एक बहुउपयोगी अनाज है जो मानव और पशु आहार दोनों में महत्वपूर्ण है। यह स्टार्च, प्रोटीन, और तेल का एक अच्छा स्रोत है। मक्का का उपयोग खाद्य उत्पादों, पशु चारा, और औद्योगिक उत्पादों में किया जाता है।",
+                cultivation: `
+                    <ol>
+                        <li><strong>मिट्टी की तैयारी:</strong> मक्का के लिए अच्छे जल निकास वाली दोमट या बलुई दोमट मिट्टी उपयुक्त होती है। खेत को 2-3 बार जोतकर समतल करें। मिट्टी का pH 5.5 से 7.5 के बीच होना चाहिए।</li>
+                        <li><strong>बीज का चयन:</strong> क्षेत्र और मौसम के अनुसार उपयुक्त संकर या उन्नत किस्म चुनें जैसे DHM-117, Pusa HM-4, Vivek QPM-9 आदि। प्रमाणित बीज का उपयोग करें।</li>
+                        <li><strong>बुवाई का समय:</strong> खरीफ में जून-जुलाई और रबी में अक्टूबर-नवंबर में बुवाई करें।</li>
+                        <li><strong>बीज दर:</strong> प्रति हेक्टेयर 20-25 किलोग्राम बीज का उपयोग करें।</li>
+                        <li><strong>बुवाई की विधि:</strong> कतार में बुवाई करें, कतारों के बीच 60-75 सेमी और पौधों के बीच 20-25 सेमी की दूरी रखें। बीज को 5-6 सेमी की गहराई पर बोएं।</li>
+                        <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 120 किग्रा नाइट्रोजन, 60 किग्रा फास्फोरस और 40 किग्रा पोटाश का प्रयोग करें। नाइट्रोजन को तीन बार में दें - बुवाई के समय, 30-35 दिन बाद, और 55-60 दिन बाद।</li>
+                    </ol>
+                `,
+                care: `
+                    <ul>
+                        <li><strong>सिंचाई:</strong> फसल चक्र में 5-6 सिंचाई की आवश्यकता होती है। महत्वपूर्ण चरणों में जैसे नी-हाई स्टेज, टैसलिंग, और दाना भरने के समय सिंचाई अवश्य करें।</li>
+                        <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 20-25 दिन बाद निराई-गुड़ाई करें। आवश्यकतानुसार अट्राजीन या पेंडीमेथालिन जैसे शाकनाशी का प्रयोग करें।</li>
+                        <li><strong>रोग नियंत्रण:</strong> 
+                            <ul>
+                                <li>तना सड़न: कार्बेन्डाजिम 50 WP @ 1 ग्राम/लीटर का छिड़काव करें।</li>
+                                <li>पत्ती झुलसा: मैंकोजेब 75 WP @ 2.5 ग्राम/लीटर का छिड़काव करें।</li>
+                                <li>कंडुआ: कार्बोक्सिन 75 WP से बीज उपचार करें।</li>
+                            </ul>
+                        </li>
+                        <li><strong>कीट नियंत्रण:</strong> 
+                            <ul>
+                                <li>तना छेदक: कार्टाप हाइड्रोक्लोराइड 4G @ 20 किग्रा/हेक्टेयर का प्रयोग करें।</li>
+                                <li>फॉल आर्मीवर्म: स्पिनोसैड 45 SC @ 0.3 मिली/लीटर का छिड़काव करें।</li>
+                            </ul>
+                        </li>
+                    </ul>
+                `,
+                harvestStorage: `
+                    <ul>
+                        <li><strong>कटाई का समय:</strong> जब भुट्टे पूरी तरह से पक जाएं और दाने कड़े हो जाएं, तब फसल काटें। आमतौर पर यह बुवाई के 90-120 दिन बाद होता है।</li>
+                        <li><strong>कटाई की विधि:</strong> हाथ से या मक्का हार्वेस्टर से कटाई की जा सकती है।</li>
+                        <li><strong>सुखाना:</strong> भुट्टों को धूप में अच्छी तरह सुखाएं ताकि नमी 12-14% तक आ जाए।</li>
+                        <li><strong>दाना निकालना:</strong> मक्का थ्रेशर या हाथ से दाने निकालें।</li>
+                        <li><strong>भंडारण:</strong> 
+                            <ul>
+                                <li>दानों को अच्छी तरह सुखाकर बोरों में या बल्क स्टोरेज में रखें।</li>
+                                <li>भंडारण स्थान को साफ, सूखा और कीट मुक्त रखें।</li>
+                                <li>नियमित रूप से भंडारित मक्का की जांच करें।</li>
+                            </ul>
+                        </li>
+                        <li><strong>बीज भंडारण:</strong> अगली फसल के लिए बीज को सील किए गए डिब्बों में रखें और कीटनाशक से उपचारित करें। बीज कोीटनाशक से उपचारित करें। बीज को ठंडे और सूखे स्थान पर रखें।</li>
+                    </ul>
+                `
+            },
+            "सोयाबीन": {
+                info: "सोयाबीन एक महत्वपूर्ण तिलहन और दलहन फसल है। यह प्रोटीन और तेल का एक उत्कृष्ट स्रोत है। सोयाबीन का उपयोग खाद्य उत्पादों, पशु आहार, और औद्योगिक उत्पादों में किया जाता है।",
+                cultivation: `
+                    <ol>
+                        <li><strong>मिट्टी की तैयारी:</strong> सोयाबीन के लिए अच्छे जल निकास वाली दोमट या काली मिट्टी उपयुक्त होती है। खेत को 2-3 बार जोतकर समतल करें। मिट्टी का pH 6.0 से 7.5 के बीच होना चाहिए।</li>
+                        <li><strong>बीज का चयन:</strong> क्षेत्र और मौसम के अनुसार उपयुक्त किस्म चुनें जैसे JS 335, NRC 37, MACS 1188 आदि। प्रमाणित बीज का उपयोग करें।</li>
+                        <li><strong>बुवाई का समय:</strong> खरीफ में जून-जुलाई में बुवाई करें।</li>
+                        <li><strong>बीज दर:</strong> प्रति हेक्टेयर 60-80 किलोग्राम बीज का उपयोग करें।</li>
+                        <li><strong>बुवाई की विधि:</strong> कतार में बुवाई करें, कतारों के बीच 30-45 सेमी और पौधों के बीच 5-10 सेमी की दूरी रखें। बीज को 3-5 सेमी की गहराई पर बोएं।</li>
+                        <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 20-30 किग्रा नाइट्रोजन, 60-80 किग्रा फास्फोरस और 40 किग्रा पोटाश का प्रयोग करें। राइजोबियम और पीएसबी कल्चर से बीज उपचार करें।</li>
+                    </ol>
+                `,
+                care: `
+                    <ul>
+                        <li><strong>सिंचाई:</strong> सामान्यतः वर्षा आधारित फसल है। सूखे की स्थिति में 1-2 सिंचाई की आवश्यकता हो सकती है। फूल आने और फली भरने के समय सिंचाई महत्वपूर्ण है।</li>
+                        <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 20-25 दिन बाद निराई-गुड़ाई करें। आवश्यकतानुसार इमाजेथापायर या क्विजालोफोप-इथाइल जैसे शाकनाशी का प्रयोग करें।</li>
+                        <li><strong>रोग नियंत्रण:</strong> 
+                            <ul>
+                                <li>पत्ती धब्बा रोग: हेक्साकोनाजोल 5 EC @ 1 मिली/लीटर का छिड़काव करें।</li>
+                                <li>जड़ गलन: ट्राइकोडर्मा विरिडी से बीज उपचार करें।</li>
+                                <li>येलो मोजेक वायरस: रोगरोधी किस्मों का उपयोग करें और वाहक कीटों का नियंत्रण करें।</li>
+                            </ul>
+                        </li>
+                        <li><strong>कीट नियंत्रण:</strong> 
+                            <ul>
+                                <li>तना मक्खी: थायामेथोक्साम 25 WG @ 100 ग्राम/हेक्टेयर का छिड़काव करें।</li>
+                                <li>तंबाकू की सुंडी: इंडोक्साकार्ब 15.8 EC @ 333 मिली/हेक्टेयर का छिड़काव करें।</li>
+                            </ul>
+                        </li>
+                    </ul>
+                `,
+                harvestStorage: `
+                    <ul>
+                        <li><strong>कटाई का समय:</strong> जब फलियां पूरी तरह से पक जाएं और पत्तियां पीली होकर गिरने लगें, तब फसल काटें। आमतौर पर यह बुवाई के 90-120 दिन बाद होता है।</li>
+                        <li><strong>कटाई की विधि:</strong> हाथ से या सोयाबीन हार्वेस्टर से कटाई की जा सकती है।</li>
+                        <li><strong>मड़ाई:</strong> थ्रेशर या हाथ से मड़ाई करें। मड़ाई के बाद दानों को अच्छी तरह साफ करें।</li>
+                        <li><strong>सुखाना:</strong> दानों को धूप में अच्छी तरह सुखाएं ताकि नमी 12% से कम हो जाए।</li>
+                        <li><strong>भंडारण:</strong> 
+                            <ul>
+                                <li>सूखे, हवादार स्थान पर बोरों में या बल्क स्टोरेज में रखें।</li>
+                                <li>भंडारण स्थान को साफ, सूखा और कीट मुक्त रखें।</li>
+                                <li>नियमित रूप से भंडारित सोयाबीन की जांच करें।</li>
+                            </ul>
+                        </li>
+                        <li><strong>बीज भंडारण:</strong> अगली फसल के लिए बीज को सील किए गए डिब्बों में रखें और कीटनाशक से उपचारित करें। बीज को ठंडे और सूखे स्थान पर रखें।</li>
+                    </ul>
+                `
+            },
+            "बाजरा": {
+    "info": "बाजरा एक महत्वपूर्ण मोटे अनाज है जो सूखे क्षेत्रों में उगाया जाता है। यह उच्च पौष्टिकता के लिए जाना जाता है और प्रोटीन, फाइबर, और कई विटामिनों का अच्छा स्रोत है। बाजरा की फसल रबी या खरीफ दोनों मौसम में उगाई जा सकती है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> बाजरा के लिए रेतीली दोमट मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें। मिट्टी का pH 5.5 से 7.0 के बीच होना चाहिए।</li>
+            <li><strong>बीज का चयन:</strong> प्रमाणित और उच्च गुणवत्ता वाले बीजों का चयन करें। क्षेत्र के अनुसार उपयुक्त किस्में जैसे कि पंक्तियों में बीजों की संकर किस्में चुनें।</li>
+            <li><strong>बुवाई का समय:</strong> बाजरा की बुवाई जून से जुलाई के बीच करें, जब बारिश का मौसम शुरू होता है।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 8-12 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीजों को 25-30 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 20 किग्रा नाइट्रोजन, 40 किग्रा फास्फोरस और 20 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> बाजरा को बारिश के मौसम में अधिक सिंचाई की आवश्यकता नहीं होती है, लेकिन सूखे समय में 2-3 बार सिंचाई करें।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 20-25 दिन बाद निराई-गुड़ाई करें। आवश्यकतानुसार शाकनाशी का प्रयोग करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+            <li><strong>कीट नियंत्रण:</strong>
+                <ul>
+                    <li>सफेद मक्खी: कीटनाशक का छिड़काव करें।</li>
+                    <li>दीमक: प्रबंधन के लिए भूमि की तैयारी में अच्छे से जोड़ें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब दाने पूरी तरह से सूख जाएं और सुनहरे रंग के हो जाएं, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>मड़ाई:</strong> मड़ाई के बाद अनाज को साफ करें।</li>
+            <li><strong>सुखाना:</strong> अनाज को धूप में सुखाएं ताकि नमी 12-14% हो जाए।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>भंडारण के लिए कीट मुक्त और हवादार गोदामों का उपयोग करें।</li>
+                    <li>नियमित रूप से भंडारित अनाज की जांच करें।</li>
+                </ul>
+            </li>
+            <li><strong>बीज भंडारण:</strong> अगली फसल के लिए बीज को ठंडे और सूखे स्थान पर रखें।</li>
+        </ul>
+    `
+},
+"ज्वार": {
+    "info": "ज्वार एक महत्वपूर्ण मोटे अनाज है जो विभिन्न जलवायु परिस्थितियों में उगाया जाता है। यह प्रोटीन और फाइबर का अच्छा स्रोत है और इसे पशु आहार के रूप में भी उपयोग किया जाता है। ज्वार की फसल खरीफ मौसम में उगाई जाती है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> ज्वार के लिए रेतीली दोमट या काली मिट्टी सबसे उपयुक्त होती है। खेत को 2-3 बार जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> प्रमाणित बीजों का चयन करें, जैसे कि सूखने की सहनशीलता वाले किस्में।</li>
+            <li><strong>बुवाई का समय:</strong> ज्वार की बुवाई जून से जुलाई के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 10-12 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> कतार में बुवाई करें, कतारों के बीच 20-25 सेमी की दूरी रखें।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 40 किग्रा नाइट्रोजन, 30 किग्रा फास्फोरस और 20 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> ज्वार को 2-3 सिंचाई की आवश्यकता होती है, विशेषकर फूल आने के समय।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 25-30 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>पीला रतुआ: उचित प्रबंधन से बचें और आवश्यकतानुसार कीटनाशक का प्रयोग करें।</li>
+                </ul>
+            </li>
+            <li><strong>कीट नियंत्रण:</strong>
+                <ul>
+                    <li>फली कीट: कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब दाने पूरी तरह से सूख जाएं और रंग बदल जाएं, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>मड़ाई:</strong> अनाज को अच्छे से मड़ाई करें और साफ करें।</li>
+            <li><strong>सुखाना:</strong> धूप में सुखाएं ताकि नमी 12-14% हो जाए।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>कीट मुक्त गोदामों में भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+            <li><strong>बीज भंडारण:</strong> अगली फसल के लिए बीज को ठंडे और सूखे स्थान पर रखें।</li>
+        </ul>
+    `
+},
+"मूंग": {
+    "info": "मूंग एक महत्वपूर्ण दलहन फसल है जो गर्मी और नमी दोनों सहन कर सकती है। यह उच्च प्रोटीन और पोषक तत्वों के लिए जाना जाता है। इसे रबी और खरीफ दोनों मौसम में उगाया जा सकता है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> मूंग के लिए हल्की दोमट मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> प्रमाणित और उच्च गुणवत्ता वाले बीजों का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> मूंग की बुवाई फरवरी से मार्च या जून से जुलाई के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 20-25 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीजों को 30-40 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 20 किग्रा नाइट्रोजन, 40 किग्रा फास्फोरस और 20 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> मूंग को 2-3 बार सिंचाई की आवश्यकता होती है, विशेषकर फूल आने के समय।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 20-25 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+            <li><strong>कीट नियंत्रण:</strong>
+                <ul>
+                    <li>चुहिया: प्रबंधन के लिए जाल का उपयोग करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब दाने पूरी तरह से सूख जाएं और सुनहरे रंग के हो जाएं, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>मड़ाई:</strong> मड़ाई के बाद अनाज को साफ करें।</li>
+            <li><strong>सुखाना:</strong> अनाज को धूप में सुखाएं ताकि नमी 12-14% हो जाए।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>भंडारण के लिए कीट मुक्त और हवादार गोदामों का उपयोग करें।</li>
+                    <li>नियमित रूप से भंडारित अनाज की जांच करें।</li>
+                </ul>
+            </li>
+            <li><strong>बीज भंडारण:</strong> अगली फसल के लिए बीज को ठंडे और सूखे स्थान पर रखें।</li>
+        </ul>
+    `
+},
+"उड़द": {
+    "info": "उड़द एक महत्वपूर्ण दलहन फसल है जो प्रोटीन का उच्च स्रोत है। यह गर्मियों में उगाई जाती है और इसकी फसल छोटी अवधि में तैयार होती है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> उड़द के लिए अच्छी जल निकासी वाली काली मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> प्रमाणित और उच्च गुणवत्ता वाले बीजों का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> उड़द की बुवाई जून से जुलाई के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 25-30 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीजों को 30-40 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 30 किग्रा नाइट्रोजन, 20 किग्रा फास्फोरस और 20 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> उड़द को 2-3 बार सिंचाई की आवश्यकता होती है।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 20-25 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+            <li><strong>कीट नियंत्रण:</strong>
+                <ul>
+                    <li>फली कीट: कीटनाशक का छिड़काव करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब दाने पूरी तरह से सूख जाएं और रंग बदल जाएं, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>मड़ाई:</strong> अनाज को अच्छे से मड़ाई करें और साफ करें।</li>
+            <li><strong>सुखाना:</strong> धूप में सुखाएं ताकि नमी 12-14% हो जाए।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>कीट मुक्त गोदामों में भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+            <li><strong>बीज भंडारण:</strong> अगली फसल के लिए बीज को ठंडे और सूखे स्थान पर रखें।</li>
+        </ul>
+    `
+},
+"मसूर": {
+    "info": "मसूर एक महत्वपूर्ण दलहन फसल है जो प्रोटीन और फाइबर का अच्छा स्रोत है। इसे रबी मौसम में उगाया जाता है और इसकी फसल जल्दी तैयार होती है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> मसूर के लिए दोमट मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> प्रमाणित बीजों का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> मसूर की बुवाई अक्टूबर से नवंबर के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 40-50 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीजों को 30-40 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 20 किग्रा नाइट्रोजन, 40 किग्रा फास्फोरस और 20 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> मसूर को 2-3 बार सिंचाई की आवश्यकता होती है, विशेषकर फूल आने के समय।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 20-25 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+            <li><strong>कीट नियंत्रण:</strong>
+                <ul>
+                    <li>फली कीट: कीटनाशक का छिड़काव करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब दाने सूख जाएं और सुनहरे रंग के हो जाएं, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>मड़ाई:</strong> मड़ाई के बाद अनाज को साफ करें।</li>
+            <li><strong>सुखाना:</strong> अनाज को धूप में सुखाएं ताकि नमी 12-14% हो जाए।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>कीट मुक्त और हवादार गोदामों में भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+            <li><strong>बीज भंडारण:</strong> अगली फसल के लिए बीज को ठंडे और सूखे स्थान पर रखें।</li>
+        </ul>
+    `
+},
+"चना": {
+    "info": "चना एक महत्वपूर्ण दलहन फसल है जो प्रोटीन और फाइबर का अच्छा स्रोत है। इसे रबी मौसम में उगाया जाता है और इसकी फसल 5-6 महीने में तैयार होती है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> चना के लिए हल्की दोमट मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> प्रमाणित और उच्च गुणवत्ता वाले बीजों का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> चने की बुवाई अक्टूबर से नवंबर के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 60-80 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीजों को 30-40 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 20 किग्रा नाइट्रोजन, 40 किग्रा फास्फोरस और 20 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> चने को 2-3 बार सिंचाई की आवश्यकता होती है, विशेषकर फूल आने के समय।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 20-25 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+            <li><strong>कीट नियंत्रण:</strong>
+                <ul>
+                    <li>किरमिच: कीटनाशक का छिड़काव करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब दाने सूख जाएं और सुनहरे रंग के हो जाएं, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>मड़ाई:</strong> मड़ाई के बाद अनाज को साफ करें।</li>
+            <li><strong>सुखाना:</strong> अनाज को धूप में सुखाएं ताकि नमी 12-14% हो जाए।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>कीट मुक्त और हवादार गोदामों में भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+            <li><strong>बीज भंडारण:</strong> अगली फसल के लिए बीज को ठंडे और सूखे स्थान पर रखें।</li>
+        </ul>
+    `
+},
+"मटर": {
+    "info": "मटर एक महत्वपूर्ण सब्जी फसल है जो ठंडे मौसम में उगाई जाती है। यह प्रोटीन, विटामिन और फाइबर का अच्छा स्रोत है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> मटर के लिए उपजाऊ और अच्छी जल निकासी वाली मिट्टी की आवश्यकता होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> उच्च गुणवत्ता वाले बीजों का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> मटर की बुवाई अक्टूबर से दिसंबर के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 80-100 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीजों को 15-20 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 30 किग्रा नाइट्रोजन, 50 किग्रा फास्फोरस और 20 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> मटर को 3-4 बार सिंचाई की आवश्यकता होती है, विशेषकर फूल आने के समय।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 20-25 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+            <li><strong>कीट नियंत्रण:</strong>
+                <ul>
+                    <li>मटर कीट: कीटनाशक का छिड़काव करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब मटर के फल हरे और चमकदार हो जाएं, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से फल तोड़ें।</li>
+            <li><strong>मड़ाई:</strong> मटर को एकत्रित करने के बाद उन्हें साफ करें।</li>
+            <li><strong>सुखाना:</strong> मटर को छांव में सुखाएं।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>हवादार और सूखे स्थान पर भंडारित करें।</li>
+                    <li>नियमित रूप से भंडारित मटर की जांच करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `
+},
+"अरहर": {
+    "info": "अरहर एक प्रमुख दलहन फसल है, जो उच्च प्रोटीन की मात्रा के लिए जानी जाती है। यह गर्मी सहिष्णु होती है और इसके लिए उपयुक्त जलवायु ग्रीष्म ऋतु है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> हल्की दोमट मिट्टी में अच्छी वृद्धि होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> प्रमाणित और उच्च गुणवत्ता वाले बीजों का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> अरहर की बुवाई जून से जुलाई के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 15-20 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीजों को 30-40 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 20 किग्रा नाइट्रोजन, 40 किग्रा फास्फोरस और 20 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> अरहर को 3-4 बार सिंचाई की आवश्यकता होती है, विशेषकर फूल आने के समय।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 20-25 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+            <li><strong>कीट नियंत्रण:</strong>
+                <ul>
+                    <li>बंदक: कीटनाशक का छिड़काव करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब फल सूख जाएं और दाने सुनहरे हो जाएं, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>मड़ाई:</strong> मड़ाई के बाद अनाज को साफ करें।</li>
+            <li><strong>सुखाना:</strong> अनाज को धूप में सुखाएं ताकि नमी 12-14% हो जाए।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>कीट मुक्त और हवादार गोदामों में भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+            <li><strong>बीज भंडारण:</strong> अगली फसल के लिए बीज को ठंडे और सूखे स्थान पर रखें।</li>
+        </ul>
+    `
+},
+"तिल": {
+    "info": "तिल एक महत्वपूर्ण तिलहन फसल है, जो तेल के लिए उगाई जाती है। यह उच्च तापमान और सूखे सहिष्णु होती है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> तिल के लिए हल्की दोमट मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> प्रमाणित और उच्च गुणवत्ता वाले बीजों का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> तिल की बुवाई जून से जुलाई के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 5-6 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीजों को 30-40 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 20 किग्रा नाइट्रोजन, 30 किग्रा फास्फोरस और 10 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> तिल को 3-4 बार सिंचाई की आवश्यकता होती है, विशेषकर फूल आने के समय।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 20-25 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+            <li><strong>कीट नियंत्रण:</strong>
+                <ul>
+                    <li>तिल के कीट: कीटनाशक का छिड़काव करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब फल सूख जाएं और पत्तियाँ पीली हो जाएं, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>मड़ाई:</strong> मड़ाई के बाद अनाज को साफ करें।</li>
+            <li><strong>सुखाना:</strong> अनाज को धूप में सुखाएं ताकि नमी 12-14% हो जाए।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>कीट मुक्त और हवादार गोदामों में भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+            <li><strong>बीज भंडारण:</strong> अगली फसल के लिए बीज को ठंडे और सूखे स्थान पर रखें।</li>
+        </ul>
+    `
+},
+"मूंगफली": {
+    "info": "मूंगफली एक प्रमुख तिलहन फसल है, जो जमीन के नीचे बीज विकसित करती है। यह प्रोटीन, विटामिन, और मिनरल का अच्छा स्रोत है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> मूंगफली के लिए दोमट मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> प्रमाणित और उच्च गुणवत्ता वाले बीजों का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> मूंगफली की बुवाई अप्रैल से जून के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 100-120 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीजों को 20-30 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 20 किग्रा नाइट्रोजन, 40 किग्रा फास्फोरस और 30 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> मूंगफली को 4-5 बार सिंचाई की आवश्यकता होती है, विशेषकर फल आने के समय।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 20-25 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+            <li><strong>कीट नियंत्रण:</strong>
+                <ul>
+                    <li>मूंगफली कीट: कीटनाशक का छिड़काव करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब पत्तियाँ पीली हो जाएं और फल सूख जाएं, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>मड़ाई:</strong> मड़ाई के बाद अनाज को साफ करें।</li>
+            <li><strong>सुखाना:</strong> मूंगफली को छांव में सुखाएं।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>कीट मुक्त और हवादार गोदामों में भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+            <li><strong>बीज भंडारण:</strong> अगली फसल के लिए बीज को ठंडे और सूखे स्थान पर रखें।</li>
+        </ul>
+    `
+},
+"सरसों": {
+    "info": "सरसों एक प्रमुख तिलहन फसल है, जो तेल के लिए उगाई जाती है। यह ठंडे मौसम में बेहतर होती है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> सरसों के लिए दोमट या बलुई दोमट मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> प्रमाणित और उच्च गुणवत्ता वाले बीजों का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> सरसों की बुवाई सितंबर से अक्टूबर के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 5-6 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीजों को 30-40 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 30 किग्रा नाइट्रोजन, 40 किग्रा फास्फोरस और 20 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> सरसों को 2-3 बार सिंचाई की आवश्यकता होती है, विशेषकर फूल आने के समय।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 20-25 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+            <li><strong>कीट नियंत्रण:</strong>
+                <ul>
+                    <li>सरसों कीट: कीटनाशक का छिड़काव करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब फल सूख जाएं और पत्तियाँ पीली हो जाएं, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>मड़ाई:</strong> मड़ाई के बाद अनाज को साफ करें।</li>
+            <li><strong>सुखाना:</strong> अनाज को धूप में सुखाएं ताकि नमी 12-14% हो जाए।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>कीट मुक्त और हवादार गोदामों में भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+            <li><strong>बीज भंडारण:</strong> अगली फसल के लिए बीज को ठंडे और सूखे स्थान पर रखें।</li>
+        </ul>
+    `
+},
+"सूरजमुखी": {
+    "info": "सूरजमुखी एक प्रमुख तेल फसल है, जो अपने खूबसूरत फूलों और बीजों के लिए जानी जाती है। इसका तेल प्रोटीन और विटामिन से भरपूर होता है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> सूरजमुखी के लिए हल्की दोमट मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> प्रमाणित और उच्च गुणवत्ता वाले बीजों का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> सूरजमुखी की बुवाई मार्च से अप्रैल के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 6-8 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीजों को 75-90 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 50 किग्रा नाइट्रोजन, 30 किग्रा फास्फोरस और 30 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> सूरजमुखी को 3-4 बार सिंचाई की आवश्यकता होती है, विशेषकर फूल आने के समय।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 20-25 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+            <li><strong>कीट नियंत्रण:</strong>
+                <ul>
+                    <li>सूरजमुखी कीट: कीटनाशक का छिड़काव करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब फूल सूख जाएं और बीज काले हो जाएं, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>मड़ाई:</strong> मड़ाई के बाद बीजों को साफ करें।</li>
+            <li><strong>सुखाना:</strong> बीजों को छांव में सुखाएं।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>कीट मुक्त और हवादार गोदामों में भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+            <li><strong>बीज भंडारण:</strong> अगली फसल के लिए बीज को ठंडे और सूखे स्थान पर रखें।</li>
+        </ul>
+    `
+},
+"अलसी": {
+    "info": "अलसी एक प्रमुख तिलहन फसल है, जिसका उपयोग रेशे और तेल के लिए किया जाता है। इसके बीज ओमेगा-3 फैटी एसिड से भरपूर होते हैं।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> अलसी के लिए दोमट मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> प्रमाणित और उच्च गुणवत्ता वाले बीजों का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> अलसी की बुवाई अक्टूबर से नवंबर के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 30-40 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीजों को 15-20 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 20 किग्रा नाइट्रोजन, 40 किग्रा फास्फोरस और 30 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> अलसी को 3-4 बार सिंचाई की आवश्यकता होती है, विशेषकर फूल आने के समय।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 20-25 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+            <li><strong>कीट नियंत्रण:</strong>
+                <ul>
+                    <li>अलसी कीट: कीटनाशक का छिड़काव करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब फल सूख जाएं और पत्तियाँ पीली हो जाएं, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>मड़ाई:</strong> मड़ाई के बाद बीजों को साफ करें।</li>
+            <li><strong>सुखाना:</strong> बीजों को धूप में सुखाएं ताकि नमी 12-14% हो जाए।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>कीट मुक्त और हवादार गोदामों में भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+            <li><strong>बीज भंडारण:</strong> अगली फसल के लिए बीज को ठंडे और सूखे स्थान पर रखें।</li>
+        </ul>
+    `
+},
+"कपास": {
+    "info": "कपास एक महत्वपूर्ण फसल है, जिसका उपयोग कपड़ा उद्योग में किया जाता है। यह गर्म और नम मौसम में अच्छी होती है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> कपास के लिए बलुई दोमट मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> प्रमाणित और उच्च गुणवत्ता वाले बीजों का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> कपास की बुवाई अप्रैल से जून के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 20-25 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीजों को 30-45 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 30 किग्रा नाइट्रोजन, 60 किग्रा फास्फोरस और 30 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> कपास को 5-6 बार सिंचाई की आवश्यकता होती है, विशेषकर फूल आने के समय।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 20-25 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+            <li><strong>कीट नियंत्रण:</strong>
+                <ul>
+                    <li>कपास कीट: कीटनाशक का छिड़काव करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब फुल सूख जाएं और रुई सफेद हो जाए, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>मड़ाई:</strong> मड़ाई के बाद बीजों को साफ करें।</li>
+            <li><strong>सुखाना:</strong> बीजों को छांव में सुखाएं।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>कीट मुक्त और हवादार गोदामों में भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+            <li><strong>बीज भंडारण:</strong> अगली फसल के लिए बीज को ठंडे और सूखे स्थान पर रखें।</li>
+        </ul>
+    `
+},
+"गन्ना": {
+    "info": "गन्ना एक महत्वपूर्ण फसल है, जिसका उपयोग चीनी उत्पादन में किया जाता है। यह गर्म और नम वातावरण में उगता है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> गन्ना के लिए बलुई और दोमट मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> प्रमाणित और उच्च गुणवत्ता वाले गन्ने के बीजों का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> गन्ना की बुवाई फरवरी से मार्च के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 20-25 टन बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> गन्ने की कटिंग को 1 मीटर की दूरी पर लगाएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 50 किग्रा नाइट्रोजन, 30 किग्रा फास्फोरस और 30 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> गन्ना को 8-10 बार सिंचाई की आवश्यकता होती है, विशेषकर बुआई के बाद।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 30-35 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+            <li><strong>कीट नियंत्रण:</strong>
+                <ul>
+                    <li>गन्ना कीट: कीटनाशक का छिड़काव करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब गन्ना 12-14 महीने का हो जाए, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>सफाई:</strong> कटाई के बाद गन्ने को अच्छी तरह साफ करें।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>गन्ने को ठंडी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+            <li><strong>बीज भंडारण:</strong> अगली फसल के लिए गन्ने के बीज को ठंडे और सूखे स्थान पर रखें।</li>
+        </ul>
+    `
+},
+"आलू": {
+    "info": "आलू एक प्रमुख कंद फसल है, जिसका उपयोग खाद्य और औषधीय रूप में किया जाता है। यह बहुत सारे विटामिन और खनिजों से भरपूर होता है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> आलू के लिए बलुई और दोमट मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> प्रमाणित और उच्च गुणवत्ता वाले आलू के बीजों का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> आलू की बुवाई फरवरी से मार्च के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 800-1000 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीजों को 60-70 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 40 किग्रा नाइट्रोजन, 50 किग्रा फास्फोरस और 30 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> आलू को 4-5 बार सिंचाई की आवश्यकता होती है, विशेषकर फूल आने के समय।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 20-25 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+            <li><strong>कीट नियंत्रण:</strong>
+                <ul>
+                    <li>आलू कीट: कीटनाशक का छिड़काव करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब पत्तियाँ पीली और सूखी हो जाएं, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>सुखाना:</strong> आलू को धूप में सुखाएं ताकि नमी कम हो जाए।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>आलू को ठंडी, सूखी और अंधेरी जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+            <li><strong>बीज भंडारण:</strong> अगली फसल के लिए बीज को ठंडे और सूखे स्थान पर रखें।</li>
+        </ul>
+    `
+},
+"प्याज": {
+    "info": "प्याज एक प्रमुख सब्जी है, जिसका उपयोग खाद्य और औषधीय रूप में किया जाता है। यह कई स्वास्थ्य लाभ प्रदान करता है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> प्याज के लिए दोमट मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> प्रमाणित और उच्च गुणवत्ता वाले प्याज के बीजों का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> प्याज की बुवाई सितंबर से अक्टूबर के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 8-10 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीजों को 15-20 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 40 किग्रा नाइट्रोजन, 60 किग्रा फास्फोरस और 30 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> प्याज को 4-5 बार सिंचाई की आवश्यकता होती है, विशेषकर फूल आने के समय।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 20-25 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+            <li><strong>कीट नियंत्रण:</strong>
+                <ul>
+                    <li>प्याज कीट: कीटनाशक का छिड़काव करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब प्याज की पत्तियाँ पीली और सूखी हो जाएं, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>सुखाना:</strong> प्याज को धूप में सुखाएं ताकि नमी कम हो जाए।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>प्याज को ठंडी, सूखी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+            <li><strong>बीज भंडारण:</strong> अगली फसल के लिए बीज को ठंडे और सूखे स्थान पर रखें।</li>
+        </ul>
+    `
+},
+"टमाटर": {
+    "info": "टमाटर एक लोकप्रिय फल है, जिसका उपयोग सलाद, सूप और कई व्यंजनों में किया जाता है। यह विटामिन C और एंटीऑक्सीडेंट का अच्छा स्रोत है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> टमाटर के लिए बलुई और दोमट मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> प्रमाणित और उच्च गुणवत्ता वाले टमाटर के बीजों का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> टमाटर की बुवाई फरवरी से मार्च के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 2-3 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीजों को 60-70 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 60 किग्रा नाइट्रोजन, 40 किग्रा फास्फोरस और 40 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> टमाटर को 4-6 बार सिंचाई की आवश्यकता होती है, विशेषकर फल लगने के समय।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 25-30 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+            <li><strong>कीट नियंत्रण:</strong>
+                <ul>
+                    <li>टमाटर कीट: कीटनाशक का छिड़काव करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब टमाटर के फल लाल और चमकदार हो जाएं, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से फल तोड़कर कटाई करें।</li>
+            <li><strong>सुखाना:</strong> कटाई के बाद टमाटर को छांव में सुखाएं।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>टमाटर को ठंडी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+            <li><strong>बीज भंडारण:</strong> अगली फसल के लिए बीज को ठंडे और सूखे स्थान पर रखें।</li>
+        </ul>
+    `
+},
+"मिर्च": {
+    "info": "मिर्च एक महत्वपूर्ण मसाला फसल है, जिसका उपयोग विभिन्न व्यंजनों में स्वाद बढ़ाने के लिए किया जाता है। यह विटामिन C और अन्य पोषक तत्वों का अच्छा स्रोत है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> मिर्च के लिए बलुई और दोमट मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> प्रमाणित और उच्च गुणवत्ता वाले मिर्च के बीजों का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> मिर्च की बुवाई फरवरी से मार्च के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 1-2 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीजों को 30-40 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 60 किग्रा नाइट्रोजन, 40 किग्रा फास्फोरस और 30 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> मिर्च को 5-6 बार सिंचाई की आवश्यकता होती है, विशेषकर फल लगने के समय।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 20-25 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+            <li><strong>कीट नियंत्रण:</strong>
+                <ul>
+                    <li>मिर्च कीट: कीटनाशक का छिड़काव करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब मिर्च के फल हरे से लाल रंग में बदल जाएं, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से फल तोड़कर कटाई करें।</li>
+            <li><strong>सुखाना:</strong> कटाई के बाद मिर्च को छांव में सुखाएं।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>मिर्च को ठंडी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+            <li><strong>बीज भंडारण:</strong> अगली फसल के लिए बीज को ठंडे और सूखे स्थान पर रखें।</li>
+        </ul>
+    `
+},
+"लहसुन": {
+    "info": "लहसुन एक महत्वपूर्ण मसाला है, जिसका उपयोग खाने में स्वाद बढ़ाने के लिए किया जाता है। इसके औषधीय गुण भी होते हैं।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> लहसुन के लिए दोमट मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> प्रमाणित और उच्च गुणवत्ता वाले लहसुन के किलों का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> लहसुन की बुवाई अक्टूबर से नवंबर के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 8-10 क्विंटल किलों का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> किलों को 15-20 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 40 किग्रा नाइट्रोजन, 60 किग्रा फास्फोरस और 30 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> लहसुन को 4-5 बार सिंचाई की आवश्यकता होती है, विशेषकर फूल आने के समय।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 20-25 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+            <li><strong>कीट नियंत्रण:</strong>
+                <ul>
+                    <li>लहसुन कीट: कीटनाशक का छिड़काव करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब लहसुन की पत्तियाँ पीली और सूखी हो जाएं, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>सुखाना:</strong> लहसुन को धूप में सुखाएं ताकि नमी कम हो जाए।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>लहसुन को ठंडी, सूखी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+            <li><strong>बीज भंडारण:</strong> अगली फसल के लिए बीज को ठंडे और सूखे स्थान पर रखें।</li>
+        </ul>
+    `
+},
+"अदरक": {
+    "info": "अदरक एक प्रमुख मसाला है, जिसका उपयोग कई खाद्य पदार्थों में किया जाता है। यह औषधीय गुण भी रखता है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> अदरक के लिए बलुई और जल निकास वाली मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> प्रमाणित और उच्च गुणवत्ता वाले अदरक के किलों का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> अदरक की बुवाई अप्रैल से मई के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 1-2 क्विंटल किलों का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> किलों को 20-25 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 40 किग्रा नाइट्रोजन, 40 किग्रा फास्फोरस और 30 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> अदरक को नियमित रूप से सिंचाई की आवश्यकता होती है, विशेषकर गर्मियों में।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 30-35 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+            <li><strong>कीट नियंत्रण:</strong>
+                <ul>
+                    <li>अदरक कीट: कीटनाशक का छिड़काव करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब अदरक की पत्तियाँ पीली और सूखी हो जाएं, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>सुखाना:</strong> अदरक को धूप में सुखाएं ताकि नमी कम हो जाए।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>अदरक को ठंडी, सूखी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+            <li><strong>बीज भंडारण:</strong> अगली फसल के लिए बीज को ठंडे और सूखे स्थान पर रखें।</li>
+        </ul>
+    `
+},
+"हल्दी": {
+    "info": "हल्दी एक महत्वपूर्ण मसाला और औषधीय पौधा है, जिसका उपयोग भारतीय खाना पकाने में और पारंपरिक चिकित्सा में होता है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> हल्दी के लिए हल्की, दोमट मिट्टी सबसे उपयुक्त होती है। खेत को अच्छी तरह जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> उच्च गुणवत्ता वाली हल्दी की किलों का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> हल्दी की बुवाई जून से जुलाई के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 1-1.5 क्विंटल किलों का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> किलों को 20-25 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 60 किग्रा नाइट्रोजन, 40 किग्रा फास्फोरस और 30 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> हल्दी को नियमित रूप से सिंचाई की आवश्यकता होती है, विशेषकर गर्मियों में।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 30-35 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+            <li><strong>कीट नियंत्रण:</strong>
+                <ul>
+                    <li>हल्दी कीट: कीटनाशक का छिड़काव करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब हल्दी की पत्तियाँ पीली और सूखी हो जाएं, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>सुखाना:</strong> हल्दी को धूप में सुखाएं ताकि नमी कम हो जाए।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>हल्दी को ठंडी, सूखी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+            <li><strong>बीज भंडारण:</strong> अगली फसल के लिए बीज को ठंडे और सूखे स्थान पर रखें।</li>
+        </ul>
+    `
+},
+"धनिया": {
+    "info": "धनिया एक महत्वपूर्ण मसाला है, जिसका उपयोग कच्चे और पक्के खाने में स्वाद बढ़ाने के लिए किया जाता है। इसके औषधीय गुण भी होते हैं।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> धनिया के लिए हल्की, दोमट मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> उच्च गुणवत्ता वाले धनिया के बीज का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> धनिया की बुवाई अक्टूबर से फरवरी के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 15-20 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीज को 15-20 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 40 किग्रा नाइट्रोजन, 30 किग्रा फास्फोरस और 20 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> धनिया को नियमित रूप से सिंचाई की आवश्यकता होती है, विशेषकर गर्मियों में।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 20-25 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+            <li><strong>कीट नियंत्रण:</strong>
+                <ul>
+                    <li>धनिया कीट: कीटनाशक का छिड़काव करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब धनिया के फूल खिलने लगे, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>सुखाना:</strong> धनिया को छांव में सुखाएं।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>धनिया को ठंडी, सूखी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+            <li><strong>बीज भंडारण:</strong> अगली फसल के लिए बीज को ठंडे और सूखे स्थान पर रखें।</li>
+        </ul>
+    `
+},
+"जीरा": {
+    "info": "जीरा एक महत्वपूर्ण मसाला है, जिसका उपयोग भारतीय व्यंजनों में स्वाद और सुगंध बढ़ाने के लिए किया जाता है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> जीरा के लिए हल्की, जल निकास वाली मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> उच्च गुणवत्ता वाले जीरे के बीज का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> जीरे की बुवाई अक्टूबर से नवंबर के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 8-10 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीज को 20-25 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 40 किग्रा नाइट्रोजन, 30 किग्रा फास्फोरस और 20 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> जीरा को नियमित रूप से सिंचाई की आवश्यकता होती है, विशेषकर फूल आने के समय।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 20-25 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+            <li><strong>कीट नियंत्रण:</strong>
+                <ul>
+                    <li>जीरा कीट: कीटनाशक का छिड़काव करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब जीरे के फल भूरे रंग में बदल जाएं, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>सुखाना:</strong> जीरा को धूप में सुखाएं ताकि नमी कम हो जाए।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>जीरा को ठंडी, सूखी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+            <li><strong>बीज भंडारण:</strong> अगली फसल के लिए बीज को ठंडे और सूखे स्थान पर रखें।</li>
+        </ul>
+    `
+},
+"मेथी": {
+    "info": "मेथी एक महत्वपूर्ण औषधीय और खाद्य पौधा है, जिसका उपयोग सलाद, सब्जियों, और मसालों में किया जाता है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> मेथी के लिए उपजाऊ, जल निकास वाली मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> उच्च गुणवत्ता वाली मेथी के बीज का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> मेथी की बुवाई अक्टूबर से दिसंबर के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 10-15 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीज को 30-35 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 30 किग्रा नाइट्रोजन, 40 किग्रा फास्फोरस और 20 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> मेथी को नियमित रूप से सिंचाई की आवश्यकता होती है, विशेषकर गर्मियों में।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 15-20 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+            <li><strong>कीट नियंत्रण:</strong>
+                <ul>
+                    <li>मेथी कीट: कीटनाशक का छिड़काव करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब मेथी की पत्तियाँ पीली और सूखी हो जाएं, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>सुखाना:</strong> मेथी को धूप में सुखाएं ताकि नमी कम हो जाए।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>मेथी को ठंडी, सूखी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+            <li><strong>बीज भंडारण:</strong> अगली फसल के लिए बीज को ठंडे और सूखे स्थान पर रखें।</li>
+        </ul>
+    `
+},
+"पालक": {
+    "info": "पालक एक महत्वपूर्ण हरी सब्जी है, जो पोषक तत्वों से भरपूर होती है। इसका उपयोग विभिन्न प्रकार के व्यंजनों में किया जाता है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> पालक के लिए उपजाऊ, दोमट मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> उच्च गुणवत्ता वाले पालक के बीज का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> पालक की बुवाई अक्टूबर से नवंबर और फरवरी से मार्च के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 20-25 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीज को 30-35 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 30 किग्रा नाइट्रोजन, 40 किग्रा फास्फोरस और 20 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> पालक को नियमित रूप से सिंचाई की आवश्यकता होती है, विशेषकर गर्मियों में।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 20-25 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+            <li><strong>कीट नियंत्रण:</strong>
+                <ul>
+                    <li>पालक कीट: कीटनाशक का छिड़काव करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब पालक की पत्तियाँ हरी और बड़ी हो जाएं, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>सुखाना:</strong> पालक को छांव में सुखाएं।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>पालक को ठंडी, सूखी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+            <li><strong>बीज भंडारण:</strong> अगली फसल के लिए बीज को ठंडे और सूखे स्थान पर रखें।</li>
+        </ul>
+    `
+},
+"गोभी": {
+    "info": "गोभी एक महत्वपूर्ण हरी सब्जी है, जो सलाद और विभिन्न व्यंजनों में उपयोग की जाती है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> गोभी के लिए उपजाऊ, दोमट मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> उच्च गुणवत्ता वाली गोभी के बीज का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> गोभी की बुवाई सितंबर से अक्टूबर और फरवरी से मार्च के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 5-6 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीज को 30-40 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 50 किग्रा नाइट्रोजन, 40 किग्रा फास्फोरस और 30 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> गोभी को नियमित रूप से सिंचाई की आवश्यकता होती है, विशेषकर गर्मियों में।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 20-25 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+            <li><strong>कीट नियंत्रण:</strong>
+                <ul>
+                    <li>गोभी कीट: कीटनाशक का छिड़काव करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब गोभी की पत्तियाँ हरी और तंग हो जाएं, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>सुखाना:</strong> गोभी को धूप में सुखाने की आवश्यकता नहीं होती, सीधे भंडारण करें।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>गोभी को ठंडी, सूखी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `
+},
+"बैंगन": {
+    "info": "बैंगन एक प्रमुख सब्जी है, जिसका उपयोग विभिन्न व्यंजनों में किया जाता है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> बैंगन के लिए उपजाऊ, दोमट मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> उच्च गुणवत्ता वाले बैंगन के बीज का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> बैंगन की बुवाई फरवरी से मार्च और जून से जुलाई के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 1-2 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीज को 60-70 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 50 किग्रा नाइट्रोजन, 60 किग्रा फास्फोरस और 40 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> बैंगन को नियमित रूप से सिंचाई की आवश्यकता होती है, विशेषकर गर्मियों में।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 15-20 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब बैंगन का रंग चमकीला और उसका आकार अच्छा हो जाए, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>सुखाना:</strong> बैंगन को धूप में सुखाने की आवश्यकता नहीं होती, सीधे भंडारण करें।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>बैंगन को ठंडी, सूखी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `
+},
+"भिंडी": {
+    "info": "भिंडी एक प्रमुख सब्जी है, जो विभिन्न व्यंजनों में उपयोग की जाती है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> भिंडी के लिए उपजाऊ, दोमट मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> उच्च गुणवत्ता वाली भिंडी के बीज का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> भिंडी की बुवाई अप्रैल से जून के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 15-20 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीज को 30-40 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 40 किग्रा नाइट्रोजन, 30 किग्रा फास्फोरस और 20 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> भिंडी को नियमित रूप से सिंचाई की आवश्यकता होती है।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 15-20 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब भिंडी का आकार 5-7 इंच हो जाए, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से काटें ताकि पौधों को नुकसान न पहुंचे।</li>
+            <li><strong>सुखाना:</strong> भिंडी को धूप में सुखाने की आवश्यकता नहीं होती, सीधे भंडारण करें।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>भिंडी को ठंडी, सूखी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `
+},
+"गाजर": {
+    "info": "गाजर एक महत्वपूर्ण जड़ वाली सब्जी है, जो सलाद और विभिन्न व्यंजनों में उपयोग की जाती है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> गाजर के लिए उपजाऊ, दोमट मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> उच्च गुणवत्ता वाली गाजर के बीज का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> गाजर की बुवाई अक्टूबर से नवंबर के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 10-12 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीज को 30-40 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 40 किग्रा नाइट्रोजन, 30 किग्रा फास्फोरस और 20 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> गाजर को नियमित रूप से सिंचाई की आवश्यकता होती है।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 20-25 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब गाजर का आकार बढ़ जाए और उसका रंग गहरा हो जाए, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>सुखाना:</strong> गाजर को धूप में सुखाने की आवश्यकता नहीं होती, सीधे भंडारण करें।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>गाजर को ठंडी, सूखी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `
+},
+"मूली": {
+    "info": "मूली एक महत्वपूर्ण जड़ वाली सब्जी है, जो सलाद और विभिन्न व्यंजनों में उपयोग की जाती है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> मूली के लिए उपजाऊ, दोमट मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> उच्च गुणवत्ता वाली मूली के बीज का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> मूली की बुवाई अक्टूबर से नवंबर और फरवरी से मार्च के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 10-12 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीज को 30-40 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 20 किग्रा नाइट्रोजन, 30 किग्रा फास्फोरस और 20 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> मूली को नियमित रूप से सिंचाई की आवश्यकता होती है।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 15-20 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब मूली का आकार बढ़ जाए और उसका रंग गहरा हो जाए, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>सुखाना:</strong> मूली को धूप में सुखाने की आवश्यकता नहीं होती, सीधे भंडारण करें।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>मूली को ठंडी, सूखी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `
+},
+"खीरा": {
+    "info": "खीरा एक प्रमुख सब्जी है, जो सलाद और विभिन्न व्यंजनों में उपयोग की जाती है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> खीरा के लिए उपजाऊ, दोमट मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> उच्च गुणवत्ता वाले खीरे के बीज का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> खीरे की बुवाई मार्च से अप्रैल और जून से जुलाई के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 5-6 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीज को 60-70 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 50 किग्रा नाइट्रोजन, 40 किग्रा फास्फोरस और 30 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> खीरे को नियमित रूप से सिंचाई की आवश्यकता होती है।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 15-20 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब खीरा का आकार 6-8 इंच हो जाए, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से काटें ताकि पौधों को नुकसान न पहुंचे।</li>
+            <li><strong>सुखाना:</strong> खीरे को धूप में सुखाने की आवश्यकता नहीं होती, सीधे भंडारण करें।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>खीरे को ठंडी, सूखी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `
+},
+"लौकी": {
+    "info": "लौकी एक महत्वपूर्ण सब्जी है, जिसका उपयोग विभिन्न व्यंजनों में किया जाता है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> लौकी के लिए उपजाऊ, दोमट मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> उच्च गुणवत्ता वाले लौकी के बीज का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> लौकी की बुवाई मार्च से मई के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 2-3 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीज को 60-70 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 30 किग्रा नाइट्रोजन, 20 किग्रा फास्फोरस और 20 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> लौकी को नियमित रूप से सिंचाई की आवश्यकता होती है।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 20-25 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब लौकी का आकार बढ़ जाए और उसका रंग हल्का हरा हो जाए, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>सुखाना:</strong> लौकी को धूप में सुखाने की आवश्यकता नहीं होती, सीधे भंडारण करें।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>लौकी को ठंडी, सूखी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `
+},
+"करेला": {
+    "info": "करेला एक कड़वा सब्जी है, जो विभिन्न व्यंजनों में उपयोग होती है और स्वास्थ्य के लिए लाभकारी होती है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> करेले के लिए उपजाऊ, दोमट मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> उच्च गुणवत्ता वाले करेले के बीज का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> करेले की बुवाई अप्रैल से मई के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 1-2 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीज को 60-70 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 30 किग्रा नाइट्रोजन, 20 किग्रा फास्फोरस और 20 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> करेले को नियमित रूप से सिंचाई की आवश्यकता होती है।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 20-25 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब करेले का आकार छोटा हो जाए और उसका रंग गहरा हरा हो जाए, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>सुखाना:</strong> करेले को धूप में सुखाने की आवश्यकता नहीं होती, सीधे भंडारण करें।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>करेले को ठंडी, सूखी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `
+},
+"तोरी": {
+    "info": "तोरी एक हरी सब्जी है जो पोषण में समृद्ध होती है और विभिन्न व्यंजनों में उपयोग की जाती है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> तोरी के लिए उपजाऊ, दोमट मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> उच्च गुणवत्ता वाले तोरी के बीज का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> तोरी की बुवाई जून से जुलाई के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 1-2 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीज को 60-70 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 30 किग्रा नाइट्रोजन, 20 किग्रा फास्फोरस और 20 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> तोरी को नियमित रूप से सिंचाई की आवश्यकता होती है।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 20-25 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब तोरी का आकार बढ़ जाए और उसका रंग हल्का हरा हो जाए, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>सुखाना:</strong> तोरी को धूप में सुखाने की आवश्यकता नहीं होती, सीधे भंडारण करें।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>तोरी को ठंडी, सूखी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `
+},
+"शिमला मिर्च": {
+    "info": "शिमला मिर्च एक रंगीन सब्जी है जो विभिन्न प्रकार के व्यंजनों में उपयोग होती है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> शिमला मिर्च के लिए उपजाऊ, दोमट मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> उच्च गुणवत्ता वाले शिमला मिर्च के बीज का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> शिमला मिर्च की बुवाई फरवरी से मार्च के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 1-2 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीज को 30-40 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 40 किग्रा नाइट्रोजन, 30 किग्रा फास्फोरस और 30 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> शिमला मिर्च को नियमित रूप से सिंचाई की आवश्यकता होती है।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 25-30 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब शिमला मिर्च का रंग चमकीला हो जाए, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>सुखाना:</strong> शिमला मिर्च को धूप में सुखाने की आवश्यकता नहीं होती, सीधे भंडारण करें।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>शिमला मिर्च को ठंडी, सूखी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `
+},
+"अरबी": {
+    "info": "अरबी एक कंद सब्जी है, जो स्वास्थ्य के लिए लाभकारी होती है और विभिन्न व्यंजनों में उपयोग की जाती है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> अरबी के लिए उपजाऊ, रेतीली मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> उच्च गुणवत्ता वाले अरबी के कंद का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> अरबी की बुवाई वर्षा ऋतु में करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 1-2 टन बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> कंदों को 30-40 सेमी की दूरी पर गहरे गड्ढों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 50 किग्रा नाइट्रोजन, 20 किग्रा फास्फोरस और 30 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> अरबी को नियमित रूप से सिंचाई की आवश्यकता होती है।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 30-35 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब पत्ते पीले होने लगें और कंद का आकार बढ़ जाए, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>सुखाना:</strong> अरबी को धूप में सुखाने की आवश्यकता नहीं होती, सीधे भंडारण करें।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>अरबी को ठंडी, सूखी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `
+},
+"शकरकंद": {
+    "info": "शकरकंद एक मीठी कंद सब्जी है, जो पोषण में समृद्ध होती है और विभिन्न व्यंजनों में उपयोग की जाती है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> शकरकंद के लिए उपजाऊ, रेतीली मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> उच्च गुणवत्ता वाले शकरकंद के कंद का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> शकरकंद की बुवाई फरवरी से अप्रैल के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 1-2 टन बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> कंदों को 30-40 सेमी की दूरी पर गहरे गड्ढों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 40 किग्रा नाइट्रोजन, 20 किग्रा फास्फोरस और 20 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> शकरकंद को नियमित रूप से सिंचाई की आवश्यकता होती है।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 25-30 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब पत्ते पीले होने लगें और कंद का आकार बढ़ जाए, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>सुखाना:</strong> शकरकंद को धूप में सुखाने की आवश्यकता नहीं होती, सीधे भंडारण करें।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>शकरकंद को ठंडी, सूखी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `
+},
+"जूट": {
+    "info": "जूट एक फाइबर फसल है, जिसका उपयोग वस्त्र और अन्य उत्पादों में किया जाता है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> जूट के लिए उपजाऊ मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> उच्च गुणवत्ता वाले जूट के बीज का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> जूट की बुवाई जून से जुलाई के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 10-15 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> बीज को 30-40 सेमी की दूरी पर कतारों में बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 20 किग्रा नाइट्रोजन, 10 किग्रा फास्फोरस और 10 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> जूट को नियमित रूप से सिंचाई की आवश्यकता होती है।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 25-30 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब जूट का रंग हरा से पीला हो जाए, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>सुखाना:</strong> जूट को धूप में सुखाने की आवश्यकता नहीं होती, सीधे भंडारण करें।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>जूट को ठंडी, सूखी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `
+},
+"रबड़": {
+    "info": "रबड़ एक महत्वपूर्ण औद्योगिक फसल है, जिसका उपयोग विभिन्न उत्पादों में किया जाता है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> रबड़ के लिए उपजाऊ, काली मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> उच्च गुणवत्ता वाले रबड़ के बीज का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> रबड़ की बुवाई वर्षा ऋतु में करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 400-500 पौधों का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> पौधों को 7-8 मीटर की दूरी पर लगाएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 80 किग्रा नाइट्रोजन, 40 किग्रा फास्फोरस और 60 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> रबड़ को नियमित रूप से सिंचाई की आवश्यकता होती है।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 25-30 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब रबड़ का रंग हल्का भूरा हो जाए, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>सुखाना:</strong> रबड़ को धूप में सुखाने की आवश्यकता नहीं होती, सीधे भंडारण करें।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>रबड़ को ठंडी, सूखी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `
+},
+"चाय": {
+    "info": "चाय एक लोकप्रिय पेय है, जिसे चाय के पौधों से प्राप्त किया जाता है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> चाय के लिए उपजाऊ, लाल मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> उच्च गुणवत्ता वाले चाय के बीज का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> चाय की बुवाई मार्च से मई के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 20-25 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> पौधों को 1 मीटर की दूरी पर लगाएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 50 किग्रा नाइट्रोजन, 30 किग्रा फास्फोरस और 30 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> चाय को नियमित रूप से सिंचाई की आवश्यकता होती है।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 25-30 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब चाय की पत्तियाँ हरी और ताजा दिखें, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>सुखाना:</strong> चाय को धूप में सुखाने की आवश्यकता नहीं होती, सीधे भंडारण करें।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>चाय को ठंडी, सूखी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `
+},
+"कॉफी": {
+    "info": "कॉफी एक लोकप्रिय पेय है, जो कॉफी के पौधों से प्राप्त किया जाता है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> कॉफी के लिए उपजाऊ, काली मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> उच्च गुणवत्ता वाले कॉफी के बीज का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> कॉफी की बुवाई मार्च से जून के बीच करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 10-15 किलोग्राम बीज का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> पौधों को 1 मीटर की दूरी पर लगाएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 40 किग्रा नाइट्रोजन, 20 किग्रा फास्फोरस और 30 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> कॉफी को नियमित रूप से सिंचाई की आवश्यकता होती है।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 25-30 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब कॉफी के फल लाल हो जाएं, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>सुखाना:</strong> कॉफी को धूप में सुखाने की आवश्यकता नहीं होती, सीधे भंडारण करें।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>कॉफी को ठंडी, सूखी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `
+},
+"नारियल": {
+    "info": "नारियल एक महत्वपूर्ण फसल है, जिसका उपयोग खाद्य, औषधीय और औद्योगिक उत्पादों में किया जाता है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> नारियल के लिए उपजाऊ, नम मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> उच्च गुणवत्ता वाले नारियल के बीज का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> नारियल की बुवाई वर्षा ऋतु में करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 100-120 पौधों का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> पौधों को 7-8 मीटर की दूरी पर लगाएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 60 किग्रा नाइट्रोजन, 30 किग्रा फास्फोरस और 50 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> नारियल को नियमित रूप से सिंचाई की आवश्यकता होती है।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 25-30 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब नारियल का रंग हल्का भूरा हो जाए, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>सुखाना:</strong> नारियल को धूप में सुखाने की आवश्यकता नहीं होती, सीधे भंडारण करें।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>नारियल को ठंडी, सूखी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `
+},
+"केला": {
+    "info": "केला एक महत्वपूर्ण फल है, जिसे भोजन में उपयोग किया जाता है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> केला के लिए उपजाऊ, काली मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> उच्च गुणवत्ता वाले केला के बीज का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> केला की बुवाई वर्षा ऋतु में करें।</li>
+            <li><strong>बीज दर:</strong> प्रति हेक्टेयर 800-1000 पौधों का उपयोग करें।</li>
+            <li><strong>बुवाई की विधि:</strong> पौधों को 2-3 मीटर की दूरी पर लगाएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 100 किग्रा नाइट्रोजन, 50 किग्रा फास्फोरस और 75 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> केला को नियमित रूप से सिंचाई की आवश्यकता होती है।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> बुवाई के 25-30 दिन बाद निराई-गुड़ाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब केला का रंग पीला हो जाए और कच्चे फल के सापेक्ष उसका आकार बड़ा हो जाए, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> हाथ से या कंबाइन हार्वेस्टर का उपयोग करके कटाई करें।</li>
+            <li><strong>सुखाना:</strong> केला को धूप में सुखाने की आवश्यकता नहीं होती, सीधे भंडारण करें।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>केले को ठंडी, सूखी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `
+},
+"आम": {
+    "info": "आम एक लोकप्रिय और स्वादिष्ट फल है, जो गर्मियों में बाजारों में उपलब्ध होता है।",
+    "cultivation": `
+        <ol>
+            <li><strong>मिट्टी की तैयारी:</strong> आम के लिए अच्छी जल निकासी वाली मिट्टी सबसे उपयुक्त होती है। खेत को अच्छे से जोतकर समतल करें।</li>
+            <li><strong>बीज का चयन:</strong> उच्च गुणवत्ता वाले आम के बीज का चयन करें।</li>
+            <li><strong>बुवाई का समय:</strong> आम की बुवाई बारिश के मौसम में की जाती है।</li>
+            <li><strong>बुवाई की विधि:</strong> बीजों को 2-3 सेंटीमीटर गहरा बोएं।</li>
+            <li><strong>उर्वरक प्रबंधन:</strong> प्रति हेक्टेयर 100 किग्रा नाइट्रोजन, 50 किग्रा फास्फोरस और 50 किग्रा पोटाश का प्रयोग करें।</li>
+        </ol>
+    `,
+    "care": `
+        <ul>
+            <li><strong>सिंचाई:</strong> आम के पौधों को आवश्यकतानुसार सिंचाई करें, विशेषकर गर्मियों में।</li>
+            <li><strong>खरपतवार नियंत्रण:</strong> नियमित रूप से खेत की सफाई करें।</li>
+            <li><strong>रोग नियंत्रण:</strong>
+                <ul>
+                    <li>फसल के दौरान कीटों और रोगों की नियमित जांच करें और जरूरत पड़ने पर कीटनाशक का उपयोग करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `,
+    "harvestStorage": `
+        <ul>
+            <li><strong>कटाई का समय:</strong> जब आम का रंग पीला होने लगे और फल नरम हो जाए, तब कटाई करें।</li>
+            <li><strong>कटाई की विधि:</strong> आम को हाथ से तोड़ें या कैंची से काटें।</li>
+            <li><strong>सुखाना:</strong> आम को धूप में सुखाने की आवश्यकता नहीं होती, सीधे भंडारण करें।</li>
+            <li><strong>भंडारण:</strong>
+                <ul>
+                    <li>आम को ठंडी, सूखी और हवादार जगह पर भंडारित करें।</li>
+                    <li>अनाज की नियमित रूप से जांच करें।</li>
+                </ul>
+            </li>
+        </ul>
+    `
+}
+
+
+        };
+        
+
+        // फसल की जानकारी प्रदर्शित करने के लिए फ़ंक्शन
+        function displayCropInfo() {
+            const selectedCrop = document.getElementById("cropSelect").value;
+            const cropTitle = document.getElementById("cropTitle");
+            const cropInfo = document.getElementById("cropInfo");
+            const cultivationInfo = document.getElementById("cultivationInfo");
+            const cropCare = document.getElementById("cropCare");
+            const harvestStorage = document.getElementById("harvestStorage");
+
+            if (selectedCrop && cropData[selectedCrop]) {
+                // चयनित फसल की जानकारी प्रदर्शित करें
+                cropTitle.innerText = selectedCrop;
+                cropInfo.innerText = cropData[selectedCrop].info;
+                cultivationInfo.innerHTML = cropData[selectedCrop].cultivation;
+                cropCare.innerHTML = cropData[selectedCrop].care;
+                harvestStorage.innerHTML = cropData[selectedCrop].harvestStorage;
+                document.getElementById("learnFrame").style.display = "block";
+            } else {
+                // यदि कोई फसल चयनित नहीं है, तो जानकारी फ्रेम छिपाएं
+                document.getElementById("learnFrame").style.display = "none";
+            }
+        }
+
+        // प्रश्नोत्तरी के लिए प्रश्न और उत्तर
+        const quizQuestions = [
+    {
+        question: "गेहूं की बुवाई का सबसे उपयुक्त समय क्या है?",
+        options: ["मार्च-अप्रैल", "जून-जुलाई", "अक्टूबर-नवंबर", "जनवरी-फरवरी"],
+        correctAnswer: 0 // A
+    },
+    {
+        question: "चावल की खेती के लिए किस प्रकार की मिट्टी सबसे उपयुक्त होती है?",
+        options: ["बलुई", "जलोढ़", "लाल", "काली"],
+        correctAnswer: 1 // B
+    },
+    {
+        question: "मक्का की फसल में कौन सा कीट गंभीर नुकसान पहुंचा सकता है?",
+        options: ["तना छेदक", "फॉल आर्मीवर्म", "अफीड", "थ्रिप्स"],
+        correctAnswer: 1 // B
+    },
+    {
+        question: "सोयाबीन में नाइट्रोजन की कितनी मात्रा प्रति हेक्टेयर डालनी चाहिए?",
+        options: ["120-150 किग्रा", "80-100 किग्रा", "50-60 किग्रा", "20-30 किग्रा"],
+        correctAnswer: 0 // A
+    },
+    {
+        question: "फसलों को कीटों और रोगों से बचाने के लिए क्या करना चाहिए?",
+        options: ["केवल रासायनिक कीटनाशकों का उपयोग", "केवल जैविक नियंत्रण", "एकीकृत कीट प्रबंधन", "कुछ नहीं करना"],
+        correctAnswer: 2 // C
+    },
+    {
+        question: "कपास की फसल में सबसे महत्वपूर्ण रोग कौन सा है?",
+        options: ["झुलसा", "फाल्स लूप", "फसल गिरना", "बीज सड़ना"],
+        correctAnswer: 0 // A
+    },
+    {
+        question: "सरसों की फसल के लिए सबसे उपयुक्त तापमान क्या होता है?",
+        options: ["15-20 डिग्री सेल्सियस", "20-25 डिग्री सेल्सियस", "25-30 डिग्री सेल्सियस", "30-35 डिग्री सेल्सियस"],
+        correctAnswer: 1 // B
+    },
+    {
+        question: "किस फसल की बुवाई वर्षा के बाद की जाती है?",
+        options: ["गेहूं", "धान", "चना", "मक्का"],
+        correctAnswer: 1 // B
+    },
+    {
+        question: "फसल चक्र में सोयाबीन का स्थान क्या है?",
+        options: ["पहली फसल", "दूसरी फसल", "तीसरी फसल", "चारों फसलों में"],
+        correctAnswer: 1 // B
+    },
+    {
+        question: "गन्ने की फसल में कौन सा उर्वरक प्रमुख है?",
+        options: ["यूरिया", "डीएपी", "पोटाश", "सुपर फॉस्फेट"],
+        correctAnswer: 0 // A
+    }
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+// प्रश्न प्रदर्शित करने का फ़ंक्शन
+function displayQuestion() {
+    const questionElement = document.getElementById("question");
+    const optionsElement = document.getElementById("options");
+    const currentQuiz = quizQuestions[currentQuestion];
+
+    questionElement.textContent = currentQuiz.question;
+    optionsElement.innerHTML = "";
+
+    for (let i = 0; i < currentQuiz.options.length; i++) {
+        const li = document.createElement("li");
+        li.className = "list-group-item";
+        const button = document.createElement("button");
+        button.className = "btn btn-outline-primary w-100";
+        button.textContent = currentQuiz.options[i];
+        button.onclick = () => checkAnswer(i);
+        li.appendChild(button);
+        optionsElement.appendChild(li);
+    }
+    updateNavigationButtons();
+}
+
+// उत्तर की जांच करने का फ़ंक्शन
+function checkAnswer(selectedOption) {
+    const currentQuiz = quizQuestions[currentQuestion];
+    if (selectedOption === currentQuiz.correctAnswer) {
+        score++;
+    }
+    currentQuestion++;
+    if (currentQuestion < quizQuestions.length) {
+        displayQuestion();
+    } else {
+        showResult();
+    }
+}
+
+// परिणाम दिखाने का फ़ंक्शन
+function showResult() {
+    const quizContainer = document.querySelector(".quiz-container");
+    quizContainer.innerHTML = `
+        <h2>प्रश्नोत्तरी समाप्त!</h2>
+        <p>आपका स्कोर: ${score} / ${quizQuestions.length}</p>
+        <button class="btn btn-primary" onclick="restartQuiz()">Quiz Completed</button>
+    `;
+}
+
+// प्रश्नोत्तरी को फिर से शुरू करने का फ़ंक्शन
+function restartQuiz() {
+    currentQuestion = 0;
+    score = 0;
+    displayQuestion();
+}
+
+// अगले प्रश्न पर जाने का फ़ंक्शन
+function nextQuestion() {
+    if (currentQuestion < quizQuestions.length - 1) {
+        currentQuestion++;
+        displayQuestion();
+    }
+}
+
+// पिछले प्रश्न पर जाने का फ़ंक्शन
+function prevQuestion() {
+    if (currentQuestion > 0) {
+        currentQuestion--;
+        displayQuestion();
+    }
+}
+
+// नेविगेशन बटन अपडेट करने का फ़ंक्शन
+function updateNavigationButtons() {
+    const nextButton = document.getElementById("next-btn");
+    const prevButton = document.getElementById("prev-btn");
+
+    nextButton.style.display = currentQuestion === quizQuestions.length - 1 ? 'none' : 'inline';
+    prevButton.style.display = currentQuestion === 0 ? 'none' : 'inline';
+}
+
+// पेज लोड होने पर प्रश्नोत्तरी शुरू करें
+window.onload = displayQuestion;
+
+    </script>
+</body>
+</html>
